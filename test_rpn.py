@@ -1,5 +1,3 @@
-require 'coveralls'
-Coveralls.wear!
 
 import unittest
 import rpn
