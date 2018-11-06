@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-from colored import fore, back, style
-from colored import fg, bg, attr
-from colored import stylize
+# from colored import fore, back, style
+# from colored import fg, bg, attr
+# from colored import stylize
 
 def calculate(arg):
 	stack = []
@@ -36,17 +36,19 @@ def calculate(arg):
 def main():
 	while True:
 		try:
-			result = calculate(input(fore.WHITE + back.MAGENTA + style.BOLD + 'rpn calc> ' + style.RESET))
-			if result < 0:
-				color = fg('red')	
-				reset = attr('reset')
-				print(color + str(result) + reset)
-			elif result > 100:
-				color = bg('black') + fg('orange_1') + attr('bold')
-				reset = attr('reset')
-				print(color + str(result) + reset)
-			else:
-				print(result)
+			result = calculate(input('rpn calc> '))
+			print(result)
+			# result = calculate(input(fore.WHITE + back.MAGENTA + style.BOLD + 'rpn calc> ' + style.RESET))
+			# if result < 0:
+			# 	color = fg('red')	
+			# 	reset = attr('reset')
+			# 	print(color + str(result) + reset)
+			# elif result > 100:
+			# 	color = bg('black') + fg('orange_1') + attr('bold')
+			# 	reset = attr('reset')
+			# 	print(color + str(result) + reset)
+			# else:
+			# 	print(result)
 		except ValueError:
 			pass
 
