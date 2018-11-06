@@ -3,5 +3,9 @@ language: python
 #select python version
 python:
   - "3.5"
+install:
+	pip install coverage
 #run makefile
-script: make
+script: 
+	- coverage run test_rpn.py
+	- covergae report
