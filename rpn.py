@@ -1,41 +1,52 @@
 #!/usr/bin/env python3
-import readline
+from colored import fore, back, style
+from colored import fg, bg, attr
+from colored import stylize
 
 def calculate(arg):
-    stack = []
+	stack = []
 
-    tokens = arg.split()
+	tokens = arg.split()
 
-    for token in tokens:
-    	try:
-    		stack.append(int(token))
-    	except ValueError:
-    		val2 = stack.pop()
-    		val1 = stack.pop()
-    		if token == '+':
-    			result = val1 + val2
-    		elif token == '-':
-    			result = val1 - val2
-    		elif token == '^':
-    			result = val1 ** val2
-    		elif token == '*':
-    			result = val1 * val2
-    		elif token == '/':
-    			result = val1 / val2
+	for token in tokens:
+		try:
+			stack.append(int(token))
+		except ValueError:
+			val2 = stack.pop()
+			val1 = stack.pop()
+			if token == '+':
+				result = val1 + val2
+			elif token == '-':
+				result = val1 - val2
+			elif token == '^':
+				result = val1 ** val2
+			elif token == '*':
+				result = val1 * val2
+			elif token == '/':
+				result = val1 / val2
 
-    		stack.append(result)
+			stack.append(result)
 
-    if len(stack) > 1:
-    	raise ValueError("Too many arguments on the stack")
+	if len(stack) > 1:
+		raise ValueError("Too many arguments on the stack")
 
-    return stack[0]
+	return stack[0]
 
 
 def main():
 	while True:
 		try:
-			result = calculate(input('rpn calc> '))
-			print(result)
+			result = calculate(input(fore.WHITE + back.MAGENTA + style.BOLD + 'rpn calc> ' + style.RESET))
+			if result < 0:
+				color = fg('red')	
+				reset = attr('reset')
+				print(color + str(result) + reset)
+			elif result > 100:
+				color = bg('black') + fg('orange_1') + attr('bold')
+				reset = attr('reset')
+				print(color + str(result) + reset)
+			else:
+				print(result)
 		except ValueError:
 			pass
 
