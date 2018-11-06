@@ -8,4 +8,4 @@ install:
 #run makefile
 script: 
 	- coverage run test_rpn.py
-	- covergae report
+	- coverage report
